@@ -58,17 +58,25 @@ var myPlayList = [
 $( document ).ready(function() {
 	// everything inside this function happens as soon as the page loads!
 
-
+console.log(displaySong);
 
 });
 
 // displaySong uses the properties in the songObject to create an HTML element for a single song
 //	  and appends the element to the playlist on the page
 function displaySong(songObject){
+	
+	$("body").append('<div id= "songInfo"></div>')
+	$("#songInfo").append('<div id="songTitle">' + songObject.title + '</div>');
+    $("#songInfo").append('<div id="songArtist">' + songObject.artist + '</div>');
+    $("#songInfo").append('<img id="songImage" src=' + songObject.imageURL +'>');
+    $("#songInfo").append('<a href= "SongURL">' + songObject.playURL + '</a>');
 
 
 
 }
+
+
 
 // displayList takes in an array of song objects, and it uses the information from each song object
 //    to create an HTML element and append it to the playlist on the page
