@@ -36,18 +36,21 @@ var myPlayList = [
 		"artist": "Clean Bandit ft. Love Ssega",
 		"imageURL": "https://i.scdn.co/image/f311bae0ebf733fb22e9569037cf44b68e641710",
 		"playURL": "https://open.spotify.com/album/52okycllbZsjP4tKJ0goBA",
+		"review": "great song!"
 	},
 	{
 		"title": "Seven Nation Army",
 		"artist": "White Stripes",
 		"imageURL": "https://images-na.ssl-images-amazon.com/images/I/51yynBRMVbL._AC_US500_QL65_.jpg",
 		"playURL": "https://open.spotify.com/album/4StIitBi8mj72prw8U4lod",
+		"review": "nope!"
 	},
 	{
 		"title": "Move Your Feet",
 		"artist": "Junior Senior",
 		"imageURL": "https://images-na.ssl-images-amazon.com/images/I/51hGF-ePp1L._AC_US500_FMwebp_QL65_.jpg",
 		"playURL": "https://open.spotify.com/track/7cGfrVoC7G03XeXn7yflx5",
+		"review": "best song 4ever!"
 	}
 
 ]
@@ -57,31 +60,33 @@ var myPlayList = [
 // DOCUMENT READY FUNCTION
 $( document ).ready(function() {
 	// everything inside this function happens as soon as the page loads!
-
-console.log(displaySong);
+	for (var i = 0; i < myPlayList.length; i++){
+		displaySong(myPlayList[i]);
+	}
+	$("#submit").click(function(){
+		addSong();	
+	});
 
 });
 
 // displaySong uses the properties in the songObject to create an HTML element for a single song
 //	  and appends the element to the playlist on the page
-function displaySong(songObject){
-	
-	$("body").append('<div id= "songInfo"></div>')
-	$("#songInfo").append('<div id="songTitle">' + songObject.title + '</div>');
-    $("#songInfo").append('<div id="songArtist">' + songObject.artist + '</div>');
-    $("#songInfo").append('<img id="songImage" src=' + songObject.imageURL +'>');
-    $("#songInfo").append('<a href= "SongURL">' + songObject.playURL + '</a>');
+function displaySong(songObject) {
 
-
+	$("body").append(songObject.title);
+    $("body").append(songObject.artist);
+    $("body").append("<img src='" + songObject.imageURL + "'>");
+    $("body").append("<a href='" + songObject.playURL + "'> Play Song </a>");
 
 }
+
 
 
 
 // displayList takes in an array of song objects, and it uses the information from each song object
 //    to create an HTML element and append it to the playlist on the page
 function displayList(songsArray){
-
+	$("body").append();
 
 
 }
@@ -96,7 +101,17 @@ function clearList(){
 // addSong takes inputs from the input boxes, organizes them into a new song object, and
 //    pushes a new song to the playlist array
 function addSong(){
-
-
-
+	var inputTitle = $("#title").val();
+	var inputArtist = $("#artist").val();
+	var inputImage = $("#play-list").val();
+	var inputURL = $("#album-image").val();
+	
+	var newSong = {
+		"title" : inputTitle,
+		"artist" : inputArtist,
+		"image": inputImage,
+		"link": inputURL
+	}
+	
+	myPlayList.push(newSong);
 }
