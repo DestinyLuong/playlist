@@ -28,7 +28,7 @@ var mySong = {
 	"imageURL": "https://images-na.ssl-images-amazon.com/images/I/51cB3PoKceL._AC_US500_FMwebp_QL65_.jpg",
 	"playURL": "https://open.spotify.com/track/4v52HuhZqVV0eNpP6vzH5I",
 
-}
+};
 
 var myPlayList = [
 	{
@@ -53,19 +53,17 @@ var myPlayList = [
 		"review": "best song 4ever!"
 	}
 
-]
+];
 
 
 
 // DOCUMENT READY FUNCTION
 $( document ).ready(function() {
-	// everything inside this function happens as soon as the page loads!
-	for (var i = 0; i < myPlayList.length; i++){
-		displaySong(myPlayList[i]);
-	}
 	$("#submit").click(function(){
-		addSong();	
-	});
+	clearList();
+	addSong();
+	displayList(myPlayList);
+});
 
 });
 
@@ -73,11 +71,11 @@ $( document ).ready(function() {
 //	  and appends the element to the playlist on the page
 function displaySong(songObject) {
 
-	$("body").append(songObject.title);
-    $("body").append(songObject.artist);
-    $("body").append("<img src='" + songObject.imageURL + "'>");
-    $("body").append("<a href='" + songObject.playURL + "'> Play Song </a>");
-
+	$("#songBody").append("<div class='' id= 'title'>" + songObject.title + "</div>");
+    $("#songBody").append("<div id= 'artist'>" + songObject.artist + "</div>");
+    $("#songBody").append("<div id= 'img'> <img src='" + songObject.imageURL + "'></div>");
+    $("#songBody").append("<div id= 'url'> <a href='" + songObject.playURL + "'> Play Song </a></div>");
+	
 }
 
 
@@ -86,15 +84,15 @@ function displaySong(songObject) {
 // displayList takes in an array of song objects, and it uses the information from each song object
 //    to create an HTML element and append it to the playlist on the page
 function displayList(songsArray){
-	$("body").append();
-
+	for (var i = 0; i < songsArray.length; i++){
+		displaySong(songsArray[i]);
+	}
 
 }
 
 // clearList removes all the content from the playlist on the page
 function clearList(){
-
-
+	$("#songBody").empty();
 
 }
 
@@ -111,7 +109,10 @@ function addSong(){
 		"artist" : inputArtist,
 		"image": inputImage,
 		"link": inputURL
-	}
+	};
 	
 	myPlayList.push(newSong);
+	
 }
+
+
