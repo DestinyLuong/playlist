@@ -71,10 +71,10 @@ $( document ).ready(function() {
 //	  and appends the element to the playlist on the page
 function displaySong(songObject) {
 
-	$("#songBody").append("<div class='' id= 'title'>" + songObject.title + "</div>");
-    $("#songBody").append("<div id= 'artist'>" + songObject.artist + "</div>");
-    $("#songBody").append("<div id= 'img'> <img src='" + songObject.imageURL + "'></div>");
-    $("#songBody").append("<div id= 'url'> <a href='" + songObject.playURL + "'> Play Song </a></div>");
+	$("#songBody").append("<div><h1>" + songObject.title + "</div></h1>");
+    $("#songBody").append("<div><p>" + songObject.artist + "</div></p>");
+    $("#songBody").append("<div> <img src='" + songObject.imageURL + "'></div>");
+    $("#songBody").append("<div><p> <a href='" + songObject.playURL + "'> Play Song </a></p></div>");
 	
 }
 
